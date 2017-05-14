@@ -23,7 +23,6 @@
                 android:id="@+id/notificationid"
                 android:layout_width="match_parent"
                 android:layout_height="180dp" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
