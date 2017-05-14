@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<android.support.v7.widget.Toolbar
+    android:id="@+id/view"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/tabselectedtextcolor">
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:popupBackground="#ffffff"
+        android:spinnerMode="dropdown">
+
+    </android.support.v7.widget.AppCompatSpinner>
+</android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.DrawerLayout
+
+        android:id="@+id/dlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+            <android.support.design.widget.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:fitsSystemWindows="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <include layout="@layout/nav_header_main"/>
+            <ListView
+                android:id="@+id/list_slidermenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:layout_gravity="start"
+                android:background="#ffffff"
+                android:choiceMode="singleChoice"
+                android:dividerHeight="1dp" />
+                </LinearLayout>
+            </android.support.design.widget.NavigationView>
+           <!---<ImageView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/header" >
+
+            </ImageView>
+            -->
+            <!-- Listview to display slider menu -->
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>

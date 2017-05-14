@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_container"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/img_header_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@color/cardview_light_background" />
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+-
+      <!--  <TextView
+            android:layout_below="@+id/img_profile"
+            android:id="@+id/website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+            -->
+
+        <ImageView
+
+            android:id="@+id/img_profile"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:paddingLeft="12dp"
+            app:srcCompat="@drawable/circleshape"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+android:layout_below="@id/img_profile"
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:textColor="#91989e"
+            android:text="Akash Shrestha"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <Button
+            android:id="@+id/login"
+            android:text="login"
+            android:textAllCaps="false"
+            android:textColor="#91989e"
+            android:background="@drawable/nav_icon_button"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:visibility="visible"
+
+            android:layout_below="@+id/img_profile"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="23dp" />
+
+    </RelativeLayout>
+</RelativeLayout>

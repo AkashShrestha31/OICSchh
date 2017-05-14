@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/tabselectedtextcolor">
+        <Button
+            android:id="@+id/buttoncalender"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:background="@drawable/button"
+            android:text="update"
+            android:clickable="true"
+            android:textColor="#ffffff"
+            android:layout_gravity="right"
+            android:elevation="5dp"
+            android:layout_marginRight="5dp"
+            />
+    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/tablayout"/>
+</LinearLayout>

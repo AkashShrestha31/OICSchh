@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:background="#ffffff"
+android:orientation="vertical"
+android:weightSum="1">
+<LinearLayout
+    android:paddingLeft="14dp"
+    android:orientation="horizontal"
+    android:id="@+id/firstgeneral"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<ImageView
+    android:layout_gravity="center"
+    android:layout_width="25dp"
+    android:src="@mipmap/settinghome"
+    android:layout_height="25dp" />
+    <TextView
+        android:id="@+id/general"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:textColor="#111bdc"
+        android:paddingBottom="10dp"
+        android:paddingLeft="9dp"
+        android:paddingTop="10dp"
+        android:paddingRight="0dp"
+        android:text="@string/general"
+        android:textStyle="bold"
+        android:clickable="true" />
+</LinearLayout>
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:id="@+id/view1"
+    android:layout_below="@id/firstgeneral"
+    style="@style/Divider" />
+    <LinearLayout
+        android:id="@+id/generallayout"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+    android:background="#36BC9A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/view1">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:id="@+id/generalspinner1"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
+            style="@style/Base.Theme.AppCompat.Light"
+            android:popupBackground="#ffffff"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginStart="38dp"
+            android:popupBackground="#ffffff"
+            android:id="@+id/generalspinner2"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:popupBackground="#ffffff"
+            android:id="@+id/generalspinner3" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/view3"
+        android:layout_below="@id/generallayout"
+        style="@style/Divider" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/view2"
+       android:background="#ededed"/>
+    </LinearLayout>
+
+</LinearLayout>
