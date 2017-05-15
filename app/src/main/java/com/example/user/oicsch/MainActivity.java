@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
@@ -35,6 +34,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
+import com.example.user.oicsch.Notification.notification;
 import com.example.user.oicsch.calender.calender;
 import com.example.user.oicsch.setting.Activity;
 import com.example.user.oicsch.syllabus.syallabus;
@@ -43,7 +43,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -171,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
+
                 try {
                     Toast.makeText(this, "This is called", Toast.LENGTH_SHORT).show();
                     databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -432,7 +432,26 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onPostResume();
         String str=checkstart.getString("faculty", "").toLowerCase().replaceAll(" ","");
         Log.d("akash",""+str);
-      FirebaseMessaging.getInstance().subscribeToTopic(str+""+ checkstart.getString("semister", ""));
+        switch (str)
+        {
+            case "bsccsit":
+                FirebaseMessaging.getInstance().subscribeToTopic(str);
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("bim");
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("bsw");
+                break;
+            case "bim":
+                FirebaseMessaging.getInstance().subscribeToTopic(str);
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("bsccsit");
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("bsw");
+                break;
+            case "bsw":
+                FirebaseMessaging.getInstance().subscribeToTopic(str);
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("bsccsit");
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("bim");
+                break;
+        }
+        //FirebaseMessaging.getInstance().subscribeToTopic(str+""+ checkstart.getString("semister", ""));
+
         createnavitem();
         startup(checkstart.getString("faculty", ""), checkstart.getString("semister", ""), checkstart.getString("section", ""));
         Log.d("line", "fuck you bitch");
