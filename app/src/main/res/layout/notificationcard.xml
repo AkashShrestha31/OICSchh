@@ -33,21 +33,81 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+
+
+            <LinearLayout
+                android:id="@+id/timelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/notifytitle"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="7dp"
+                android:layout_marginStart="7dp">
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/rectangelered" />
+
+                <TextView
+                    android:id="@+id/texttime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/notifytitle"
+                    android:text="Time" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/datelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/notifytitle"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/rectangelered" />
+
+                <TextView
+                    android:id="@+id/textdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/notifytitle"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    android:text="Date" />
+            </LinearLayout>
+
+            <TextView
+
+                android:id="@+id/notifymessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:paddingLeft="16dp"
+                android:text="Message"
+                android:layout_below="@+id/timelayout"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
             <ImageView
                 android:id="@+id/notify_image_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/notifytitle"
+                android:layout_below="@id/notifymessage"
+                android:background="#c0bebe"
                 android:scaleType="fitXY" />
 
-
-            <TextView
-                android:id="@+id/notifymessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/notify_image_url"
-                android:paddingLeft="16dp"
-                android:text="Message" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
     <!--
