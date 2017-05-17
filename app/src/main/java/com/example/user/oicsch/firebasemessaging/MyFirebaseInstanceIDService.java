@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.user.oicsch;
+package com.example.user.oicsch.firebasemessaging;
 
 import android.content.Context;
 import android.content.SharedPreferences;

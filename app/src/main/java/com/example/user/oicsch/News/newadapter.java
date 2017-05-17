@@ -1,4 +1,4 @@
-package com.example.user.oicsch;
+package com.example.user.oicsch.News;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.user.oicsch.R;
+import com.example.user.oicsch.webview;
 
 import java.util.ArrayList;
 

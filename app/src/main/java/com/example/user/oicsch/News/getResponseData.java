@@ -1,4 +1,4 @@
-package com.example.user.oicsch;
+package com.example.user.oicsch.News;
 
 /**
  * Created by user on 2/25/2017.

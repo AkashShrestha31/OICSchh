@@ -30,13 +30,13 @@
 
     <Button
         android:text="Lets Go"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:textColor="#ffffff"
+        android:layout_height="40dp"
         android:layout_alignTop="@+id/welcometablayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/startbutton"
-        android:elevation="0dp"
-        android:backgroundTint="@color/colorAccent" />
+        android:background="@drawable/welcomebutton"
+       />
 </RelativeLayout>

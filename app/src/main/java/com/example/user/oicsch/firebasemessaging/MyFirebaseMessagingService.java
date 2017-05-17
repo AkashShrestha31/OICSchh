@@ -21,19 +21,21 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.user.oicsch.R;
-import com.example.user.oicsch.notification;
+import com.example.user.oicsch.Notification.notification;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -45,6 +47,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "poo";
     private Bitmap bitmap;
+    private DatabaseReference databaseReference;
+    private SharedPreferences checkstart;
 
     /**
      * Called when message is received.
@@ -54,6 +58,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     // [START receive_message]
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        checkstart = getSharedPreferences("start", Context.MODE_PRIVATE);
         // [START_EXCLUDE]
         // There are two types of messages data messages and notification messages. Data messages are handled
         // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
@@ -73,7 +78,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String title=remoteMessage.getData().get("title");
             String message=remoteMessage.getData().get("message");
             String image_url=remoteMessage.getData().get("image_url");
+            String date=remoteMessage.getData().get("date");
+            String time=remoteMessage.getData().get("time");
             bitmap= getBitmapfromUrl(image_url);
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference.child("Notification");
+            databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title);
+            databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Title").setValue(title);
+            databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Message").setValue(message);
+            databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Image_url").setValue(image_url);
+            databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Time").setValue(time);
+            databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Date").setValue(date);
             sendNotification(title,message,bitmap);
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -134,8 +149,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
-                .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(image))
+                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image))
                 .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setLights(0xff00ff00,200,200)
                 .setSound(defaultSoundUri)

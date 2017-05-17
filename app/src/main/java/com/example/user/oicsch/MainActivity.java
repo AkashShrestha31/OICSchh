@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
+import com.example.user.oicsch.News.newsportal;
 import com.example.user.oicsch.Notification.notification;
 import com.example.user.oicsch.calender.calender;
 import com.example.user.oicsch.setting.Activity;

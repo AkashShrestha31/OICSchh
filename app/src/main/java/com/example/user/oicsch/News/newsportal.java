@@ -1,4 +1,4 @@
-package com.example.user.oicsch;
+package com.example.user.oicsch.News;
 
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -14,11 +14,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
+import com.example.user.oicsch.API;
+import com.example.user.oicsch.R;
+import com.example.user.oicsch.ResponseModel;
 import com.example.user.oicsch.setting.Activity;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
