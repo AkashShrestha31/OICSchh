@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.example.user.oicsch.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 /**

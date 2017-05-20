@@ -2,7 +2,6 @@ package com.example.user.oicsch.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.oicsch.R;
-import com.example.user.oicsch.log;
 import com.example.user.oicsch.schedule;
 
 import java.util.List;

@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.oicsch.R;
-import com.example.user.oicsch.schedule;
-
-import java.util.List;
 
 /**
  * Created by Aakash on 7/30/2016.

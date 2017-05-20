@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
 import com.example.user.oicsch.News.newsportal;
 import com.example.user.oicsch.Notification.notification;
@@ -52,6 +53,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -310,6 +312,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         switch (faculty) {
             case "BSC CSIT":
                 //editor.clear();
+                    setTitle("BSC CSIT");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitcolor)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimblack)));
@@ -350,6 +353,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 lv.setItemChecked(0, true);
                 break;
             case "BIM":
+                setTitle("BIM");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitblack)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimcolor)));
@@ -389,6 +393,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 lv.setItemChecked(1, true);
                 break;
             case "BSW":
+                setTitle("BSW");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitblack)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimblack)));
@@ -444,7 +449,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onPostResume();
         String str=checkstart.getString("faculty", "").toLowerCase().replaceAll(" ","");
         Log.d("akash",""+str);
-        switch (str)
+        FirebaseMessaging.getInstance().subscribeToTopic("akash");
+        /*switch (str)
         {
             case "bsccsit":
                 FirebaseMessaging.getInstance().subscribeToTopic(str);
@@ -461,7 +467,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 FirebaseMessaging.getInstance().unsubscribeFromTopic("bsccsit");
                 FirebaseMessaging.getInstance().unsubscribeFromTopic("bim");
                 break;
-        }
+        }*/
         //FirebaseMessaging.getInstance().subscribeToTopic(str+""+ checkstart.getString("semister", ""));
 
         createnavitem();
@@ -543,6 +549,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     case 0:
                         //getSupportActionBar().setSubtitle("About");
                         //editor.clear();
+
                         showsemiserCSIT(firebasesemisterBSCCSIT);
                         editor.putString("faculty", nevMenuItem[0]);
                         editor.apply();
@@ -691,6 +698,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     alert.dismiss();
                     editor.clear();
                 }
+                setTitle("BSC CSIT");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitcolor)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimblack)));
@@ -759,6 +767,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     alert.dismiss();
                     editor.clear();
                 }
+                setTitle("BIM");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitblack)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimcolor)));
@@ -830,6 +839,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     alert.dismiss();
                     editor.clear();
                 }
+                setTitle("BSW");
+                getSupportActionBar().setSubtitle("Five");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitblack)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimblack)));

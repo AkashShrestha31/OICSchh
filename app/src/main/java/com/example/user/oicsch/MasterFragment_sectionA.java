@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.user.oicsch.Adapter.ViewPagerAdapter;
 import com.example.user.oicsch.sectionA.FridayA;
@@ -18,7 +16,6 @@ import com.example.user.oicsch.sectionA.SundayA;
 import com.example.user.oicsch.sectionA.ThrusdayA;
 import com.example.user.oicsch.sectionA.TuesdayA;
 import com.example.user.oicsch.sectionA.WednesdayA;
-
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

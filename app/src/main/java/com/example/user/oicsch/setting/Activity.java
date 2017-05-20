@@ -1,27 +1,24 @@
 package com.example.user.oicsch.setting;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
-import com.example.user.oicsch.MainActivity;
 import com.example.user.oicsch.Nav_drawer_item;
 import com.example.user.oicsch.R;
 import com.example.user.oicsch.firebaseurl;
@@ -71,11 +68,13 @@ public class Activity extends AppCompatActivity {
     int filecount=0;
     File file;
     File SDCardRoot;
-
+    boolean my_default_value=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_);
+        checkstart = getSharedPreferences("start", Context.MODE_PRIVATE);
+        checkeditor = checkstart.edit();
         //just test
         SDCardRoot1 = Environment.getExternalStorageDirectory();
         SDCardRoot=new File(SDCardRoot1.getAbsolutePath()+ "/" +"Android/data/com.example.user.oicsch","Files");
@@ -160,7 +159,19 @@ public class Activity extends AppCompatActivity {
                 down.execute(urlarray);
             }
         });
+//checkbox listener
 
+
+        AppCompatCheckBox appCompatCheckBox=(AppCompatCheckBox)findViewById(R.id.checkBox2);
+        appCompatCheckBox.setChecked(checkstart.getBoolean("checkbox",my_default_value));
+        appCompatCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Log.d("poo",""+b);
+                checkeditor.putBoolean("checkbox",b);
+                checkeditor.apply();
+            }
+        });
 
     }
 
@@ -174,8 +185,7 @@ public class Activity extends AppCompatActivity {
         spinner1 = (Spinner) findViewById(R.id.generalspinner1);
         spinner2 = (Spinner) findViewById(R.id.generalspinner2);
         spinner3 = (Spinner) findViewById(R.id.generalspinner3);
-        checkstart = getSharedPreferences("start", Context.MODE_PRIVATE);
-        checkeditor = checkstart.edit();
+
         semisterBSCCSIT = new ArrayList<>();
         semisterBIM = new ArrayList<>();
         semisterBSW = new ArrayList<>();

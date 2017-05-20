@@ -49,7 +49,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private Bitmap bitmap;
     private DatabaseReference databaseReference;
     private SharedPreferences checkstart;
-
+Boolean my_default_value=true;
     /**
      * Called when message is received.
      *
@@ -139,10 +139,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param image FCM message body received.
      */
     private void sendNotification(String title, String message, Bitmap image) {
+
         Intent intent = new Intent(getApplicationContext(), notification.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0 /* Request code */, intent,0);
-
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -155,7 +155,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setSound(defaultSoundUri)
                 .setPriority(Notification.PRIORITY_MAX)
                 .setContentIntent(pendingIntent);
+       // Log.d("poo","The value is: "+checkstart.getBoolean("checkbox",my_default_value));
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if(checkstart.getBoolean("checkbox",my_default_value))
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
     public Bitmap getBitmapfromUrl(String imageUrl) {
