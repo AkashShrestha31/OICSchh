@@ -1,5 +1,6 @@
 package com.example.user.oicsch.WelcomeScreen;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.user.oicsch.R;
 
@@ -17,11 +19,16 @@ public class WelcomeFragment2 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
+
+
+
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("line","fuckafafaf");
+        Log.d("line", "fuckafafaf");
+
     }
 
     @Override
@@ -35,8 +42,7 @@ public class WelcomeFragment2 extends Fragment {
                 checkeditor.putString("semister","0");
         checkeditor.putString("section","0");
         checkeditor.apply();*/
-        Button button=(Button)getActivity().findViewById(R.id.startbutton);
-        button.setVisibility(View.GONE);
+
         return  view;
     }
 

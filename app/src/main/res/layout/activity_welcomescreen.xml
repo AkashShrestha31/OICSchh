@@ -33,10 +33,11 @@
         android:layout_width="120dp"
         android:textColor="#ffffff"
         android:layout_height="40dp"
+        android:id="@+id/startbutton"
+        android:background="@drawable/welcomebutton"
         android:layout_alignTop="@+id/welcometablayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/startbutton"
-        android:background="@drawable/welcomebutton"
-       />
+        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp" />
 </RelativeLayout>

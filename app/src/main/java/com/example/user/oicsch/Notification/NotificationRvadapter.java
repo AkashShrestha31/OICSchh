@@ -64,7 +64,7 @@ public class NotificationRvadapter extends RecyclerView.Adapter<NotificationRvad
             Glide.clear(holder.imageview);
             Glide.with(holder.imageview.getContext())
                     .load(notification.get(position).getImage_url())
-                    .placeholder(R.mipmap.ic_launcher)
+                    .placeholder(android.R.color.darker_gray)
                     .into(holder.imageview);
         }
         else

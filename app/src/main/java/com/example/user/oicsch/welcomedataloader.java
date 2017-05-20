@@ -48,7 +48,7 @@ public class welcomedataloader extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(this, ""+permissions[0]+ "was "+grantResults[0], Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, ""+permissions[0]+ "was "+grantResults[0], Toast.LENGTH_SHORT).show();
             //resume tasks needing this permission
         }
         switch (requestCode)
@@ -74,8 +74,8 @@ public class welcomedataloader extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomedataloader);
         imageView=(ImageView)findViewById(R.id.imageView2);
-       Toast.makeText(this, ""+ android.os.Build.VERSION_CODES.LOLLIPOP, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, ""+ android.os.Build.VERSION.SDK_INT, Toast.LENGTH_SHORT).show();
+      // Toast.makeText(this, ""+ android.os.Build.VERSION_CODES.LOLLIPOP, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this, ""+ android.os.Build.VERSION.SDK_INT, Toast.LENGTH_SHORT).show();
 
         if(android.os.Build.VERSION.SDK_INT>android.os.Build.VERSION_CODES.LOLLIPOP) {
             boolean hasPermission = (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
@@ -86,11 +86,11 @@ public class welcomedataloader extends AppCompatActivity {
                 File SDCardRoot = Environment.getExternalStorageDirectory();
                 Dir=new File(SDCardRoot.getAbsolutePath()+ "/" +"Android/data","com.example.user.oicsch");
                 if(Dir.exists()){
-                    Toast.makeText(this, "directory exist", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(this, "directory exist", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Dir.mkdir();
-                    Toast.makeText(this, "directory is just created", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "directory is just created", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -101,11 +101,11 @@ public class welcomedataloader extends AppCompatActivity {
             File SDCardRoot = Environment.getExternalStorageDirectory();
             Dir=new File(SDCardRoot.getAbsolutePath()+ "/" +"Android/data","com.example.user.oicsch");
             if(Dir.exists()){
-                Toast.makeText(this, "directory exist", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "directory exist", Toast.LENGTH_SHORT).show();
             }
             else{
                 Dir.mkdir();
-                Toast.makeText(this, "directory is just created", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "directory is just created", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -124,20 +124,20 @@ public void startretry()
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(this, "Network Found", Toast.LENGTH_LONG).show();
+          //  Toast.makeText(this, "Network Found", Toast.LENGTH_LONG).show();
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReferenceFromUrl("gs://oicsch-213e5.appspot.com").child("semistername1.csv");
-            Toast.makeText(this, "This is download url: "+storageRef.getDownloadUrl(), Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "This is download url: "+storageRef.getDownloadUrl(), Toast.LENGTH_SHORT).show();
             storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Toast.makeText(welcomedataloader.this, "Successful"+uri, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(welcomedataloader.this, "Successful"+uri, Toast.LENGTH_LONG).show();
                     senduri(uri);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(welcomedataloader.this, "failure: "+exception, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(welcomedataloader.this, "failure: "+exception, Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -187,7 +187,7 @@ startretry();
 }
     private void senduri(Uri uri) {
         String urlarray = uri.toString();
-        Toast.makeText(this, "This is from send uri", Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this, "This is from send uri", Toast.LENGTH_LONG).show();
         firebaseurldownload firebaseurldownloads = new firebaseurldownload();
         firebaseurldownloads.execute(urlarray);
     }
@@ -197,7 +197,7 @@ startretry();
         @Override
         protected void onProgressUpdate(Void... values) {
             super.onProgressUpdate(values);
-            Toast.makeText(welcomedataloader.this, "This is from do in backgorund", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(welcomedataloader.this, "This is from do in backgorund", Toast.LENGTH_SHORT).show();
 
         }
 

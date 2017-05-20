@@ -10,13 +10,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.user.oicsch.Adapter.ViewPagerAdapter;
 import com.example.user.oicsch.MainActivity;
 import com.example.user.oicsch.R;
 
 public class welcomescreen extends AppCompatActivity {
-
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,8 @@ public class welcomescreen extends AppCompatActivity {
         final SharedPreferences.Editor editor=sharedPreferences.edit();
         TabLayout tabLayout=(TabLayout) findViewById(R.id.welcometablayout);
         ViewPager viewPager=(ViewPager)findViewById(R.id.welcomeviewpager);
-        Button button=(Button)findViewById(R.id.startbutton);
+       button=(Button)findViewById(R.id.startbutton);
+button.setVisibility(View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +49,35 @@ public class welcomescreen extends AppCompatActivity {
         viewPagerAdapter.addFragmeent(new WelcomeFragment3(),"");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager,true);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                switch(position)
+                {
+                    case 0:
+                        button.setVisibility(View.GONE);
+                        break;
+                    case 1:
+                        button.setVisibility(View.GONE);
+                        break;
+                    case 2:
+                        button.setVisibility(View.VISIBLE);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 

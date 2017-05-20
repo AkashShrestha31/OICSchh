@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private ListView lv;
     TextView tv;
     private ArrayList<navimage> navigationimage;
-    ImageView navimg;
+    private ImageView navimg;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
     private AlertDialog alert;
@@ -80,12 +80,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private ArrayList<String> firebasesemisterBIM;
     private ArrayList<String> firebasesemisterBSW;
     private DrawerLayout mdrawerlayout;
-    private ActionBarDrawerToggle mactionBardrawertoogle;
     private SharedPreferences.Editor editor;
     private NavDrawerListAdapter nav;
     private String[] nevMenuItem;
     AlertDialog.Builder dialog_builder;
-    private SharedPreferences sharedPreferences;
     public ProgressDialog mProgressDialog;
     DatabaseReference databaseReference;
     // [START declare_auth]
@@ -97,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPreferences = getSharedPreferences("storevalue", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("storevalue", Context.MODE_PRIVATE);
         checkstart = getSharedPreferences("start", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         setContentView(R.layout.activity_main);
@@ -113,9 +111,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
                     //login button
-                    googlesignin();
-                    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-                    startActivityForResult(signInIntent, RC_SIGN_IN);
+                    try {
+                        googlesignin();
+                        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+                        startActivityForResult(signInIntent, RC_SIGN_IN);
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(MainActivity.this, "Sign in failed!!!", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Connection Failed!!", Toast.LENGTH_LONG).show();
@@ -173,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 GoogleSignInAccount account = result.getSignInAccount();
 
                 try {
-                    Toast.makeText(this, "This is called", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "This is called", Toast.LENGTH_SHORT).show();
                     databaseReference = FirebaseDatabase.getInstance().getReference();
                     databaseReference.child("Students");
                     databaseReference.child("Students").child(""+account.getDisplayName());
@@ -252,7 +256,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if (user != null) {
             TextView textView = (TextView) findViewById(R.id.name);
             textView.setVisibility(View.VISIBLE);
-            textView.setText(user.getDisplayName());
+            String str=user.getDisplayName();
+            textView.setText(str);
             findViewById(R.id.login).setVisibility(View.GONE);
             imagProfile = (ImageView) findViewById(R.id.img_profile);
             // Loading profile image
@@ -460,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private void createdrawer() {
         mdrawerlayout = (DrawerLayout) findViewById(R.id.dlayout);
-        mactionBardrawertoogle = new ActionBarDrawerToggle(this, mdrawerlayout, tb, R.string.app_name, R.string.app_name) {
+        ActionBarDrawerToggle mactionBardrawertoogle = new ActionBarDrawerToggle(this, mdrawerlayout, tb, R.string.app_name, R.string.app_name) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);

@@ -28,6 +28,9 @@ import java.util.ArrayList;
 public class WelcomeFragment3 extends Fragment {
     ArrayList<String> semisterBSCCSIT;
     ArrayList<String> semisterBIM;
+
+
+
     ArrayList<String> semisterBSW;
     Spinner spinner1;
     Spinner spinner;
@@ -40,15 +43,22 @@ public class WelcomeFragment3 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_welcome_fragment3, container, false);
-        Button button=(Button)getActivity().findViewById(R.id.startbutton);
-        button.setVisibility(View.VISIBLE);
+
         checkstart=getActivity().getSharedPreferences("start",Context.MODE_PRIVATE);
         checkeditor=checkstart.edit();
         semisterBSCCSIT = new ArrayList<>();
