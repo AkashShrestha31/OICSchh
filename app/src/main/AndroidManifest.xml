@@ -11,18 +11,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name=".firebasemessaging.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".firebasemessaging.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".MyJobService"
+            android:name=".firebasemessaging.MyJobService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
@@ -49,13 +49,13 @@
         </activity>
 
         <activity android:name=".setting.Activity" />
-        <activity android:name=".newsportal" />
+        <activity android:name=".News.newsportal" />
         <activity android:name=".webview" />
         <activity android:name=".syllabus.syallabus" />
         <activity android:name=".calender.calender" />
 
 
-        <activity android:name=".notification"
+        <activity android:name=".Notification.notification"
             android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
