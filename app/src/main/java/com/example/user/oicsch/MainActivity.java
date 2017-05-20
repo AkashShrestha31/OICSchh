@@ -257,7 +257,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             TextView textView = (TextView) findViewById(R.id.name);
             textView.setVisibility(View.VISIBLE);
             String str=user.getDisplayName();
-            textView.setText(str);
+            try {
+                textView.setText(str.toUpperCase());
+            }
+            catch(Exception e)
+            {
+                textView.setText(str);
+            }
             findViewById(R.id.login).setVisibility(View.GONE);
             imagProfile = (ImageView) findViewById(R.id.img_profile);
             // Loading profile image
