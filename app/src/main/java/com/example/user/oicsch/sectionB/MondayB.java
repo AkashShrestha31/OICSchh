@@ -30,10 +30,10 @@ import java.util.ArrayList;
  */
 
 public class MondayB extends Fragment {
-    ArrayList<schedule> array;
-    SharedPreferences sharedPreferences;
+    private ArrayList<schedule> array;
+    private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    File SDCardRoot;
+    private File SDCardRoot;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

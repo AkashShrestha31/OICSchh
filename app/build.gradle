@@ -30,7 +30,7 @@ dependencies {
     //recyclerview
     //cardview
     compile 'com.firebase:firebase-jobdispatcher:0.5.2'
-
+    compile 'com.android.volley:volley:1.0.0'
     // Google Sign In SDK (only required for Google Sign In)
     compile 'com.google.android.gms:play-services-auth:10.0.1'
     //firebase notification

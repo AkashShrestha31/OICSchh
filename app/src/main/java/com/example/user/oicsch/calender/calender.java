@@ -29,12 +29,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class calender extends AppCompatActivity {
-    int filecount=0;
-    int S;
+    private int filecount=0;
+    private int S;
     StorageReference storageRef;
     FirebaseStorage storage;
-    File SDCardRoot1;
-    String[] calenderfilename={"BscCsit(First)Calender","BscCsit(Second)Calender","BscCsit(Third)Calender","BscCsit(Fourth)Calender","BscCsit(Fifth)Calender","BscCsit(Sixth)Calender","BscCsit(Seventh)Calender","BscCsit(Eight)Calender","Bim(First)Calender","Bim(Second)Calender","Bim(Third)Calender","Bim(Fourth)Calender","Bim(Fifth)Calender","Bim(Sixth)Calender","Bim(Seventh)Calender","Bim(Eight)Calender"};
+    private File SDCardRoot1;
+    private final String[] calenderfilename={"BscCsit(First)Calender","BscCsit(Second)Calender","BscCsit(Third)Calender","BscCsit(Fourth)Calender","BscCsit(Fifth)Calender","BscCsit(Sixth)Calender","BscCsit(Seventh)Calender","BscCsit(Eight)Calender","Bim(First)Calender","Bim(Second)Calender","Bim(Third)Calender","Bim(Fourth)Calender","Bim(Fifth)Calender","Bim(Sixth)Calender","Bim(Seventh)Calender","Bim(Eight)Calender"};
     private ProgressDialog progressDialog;
 
     @Override
@@ -86,7 +86,7 @@ public class calender extends AppCompatActivity {
             }
         });
     }
-    class firebasepdfdownloader extends AsyncTask<String,Void,Void> {
+    private class firebasepdfdownloader extends AsyncTask<String,Void,Void> {
 
         @Override
         protected Void doInBackground(String... params) {

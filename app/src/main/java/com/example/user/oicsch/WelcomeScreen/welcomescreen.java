@@ -16,7 +16,7 @@ import com.example.user.oicsch.MainActivity;
 import com.example.user.oicsch.R;
 
 public class welcomescreen extends AppCompatActivity {
-    Button button;
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

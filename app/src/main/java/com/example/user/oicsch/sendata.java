@@ -24,8 +24,8 @@ import java.util.Arrays;
 
 public class sendata extends Fragment {
 
-    URL url;
-    int filename=0;
+    private URL url;
+    private int filename=0;
     EditText editText;
     EditText editText1,editText2,editText3;
     @Override

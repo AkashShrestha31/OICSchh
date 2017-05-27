@@ -16,9 +16,9 @@ import com.example.user.oicsch.R;
  * Created by Aakash on 7/30/2016.
  */
 public class SyllabusRVAdapter extends RecyclerView.Adapter<SyllabusRVAdapter.MyViewHolder> {
-    private String[] array;
-    Context context;
-    OnCardClickListner onCardClickListner;
+    private final String[] array;
+    private final Context context;
+    private final OnCardClickListner onCardClickListner;
     public SyllabusRVAdapter(Context context, String[] array,OnCardClickListner onCardClickListner) {
         this.context=context;
         this.array=array;
@@ -27,7 +27,7 @@ public class SyllabusRVAdapter extends RecyclerView.Adapter<SyllabusRVAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
-        TextView Stext;
+        final TextView Stext;
         CardView cardView;
 
         public MyViewHolder(View view) {

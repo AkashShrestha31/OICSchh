@@ -4,7 +4,7 @@ package com.example.user.oicsch;
  * Created by Aakash on 8/2/2016.
  */
 public class Nav_drawer_item {
-    String title;
+    private String title;
     public Nav_drawer_item(String title) {
         this.title=title;
     }

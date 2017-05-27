@@ -16,8 +16,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 public class webview extends AppCompatActivity {
-    SharedPreferences sharedPreferences;
-    ProgressBar progressBar;
+    private SharedPreferences sharedPreferences;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class webview extends AppCompatActivity {
       internetcheck();
 
     }
-    void internetcheck()
+    private void internetcheck()
     {
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         progressBar=(ProgressBar)findViewById(R.id.progressBar1);
@@ -51,7 +51,7 @@ public class webview extends AppCompatActivity {
         }
 
     }
-        void showinwebview()
+        private void showinwebview()
     {
 
         sharedPreferences=this.getSharedPreferences("url", Context.MODE_PRIVATE);
@@ -61,7 +61,7 @@ public class webview extends AppCompatActivity {
         webView.setWebViewClient(new mywebviewclient());
         webView.loadUrl(sharedPreferences.getString("url",""));
     }
-    class mywebviewclient extends WebViewClient{
+    private class mywebviewclient extends WebViewClient{
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             progressBar.setVisibility(View.VISIBLE);

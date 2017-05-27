@@ -1,27 +1,16 @@
 package com.example.user.oicsch.WelcomeScreen;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.user.oicsch.R;
 
 
 public class WelcomeFragment2 extends Fragment {
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
-
 
 
     @Override
@@ -35,7 +24,6 @@ public class WelcomeFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_welcome_fragment2, container, false);
         /*SharedPreferences checkstart = getActivity().getSharedPreferences("start", Context.MODE_PRIVATE);
         SharedPreferences.Editor checkeditor = checkstart.edit();
         checkeditor.putString("faculty","Bsc Csit");
@@ -43,7 +31,7 @@ public class WelcomeFragment2 extends Fragment {
         checkeditor.putString("section","0");
         checkeditor.apply();*/
 
-        return  view;
+        return inflater.inflate(R.layout.fragment_welcome_fragment2, container, false);
     }
 
 

@@ -20,7 +20,7 @@ import java.io.File;
 
 public class Bim extends Fragment {
 
-    File SDCardRoot;
+    private File SDCardRoot;
     private String[] sem;
 
     @Override

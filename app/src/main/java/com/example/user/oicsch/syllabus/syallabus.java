@@ -34,15 +34,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class syallabus extends AppCompatActivity {
-    int filecount = 0;
-    int S = 0;
-    InputStream inputStream;
+    private int filecount = 0;
+    private int S = 0;
+    private InputStream inputStream;
     StorageReference storageRef;
     FirebaseStorage storage;
-    String[] syllabusfilename = {"BscCsit(First)", "BscCsit(Second)", "BscCsit(Third)", "BscCsit(Fourth)", "BscCsit(Fifth)", "BscCsit(Sixth)", "BscCsit(Seventh)", "BscCsit(Eight)", "Bim(First)", "Bim(Second)", "Bim(Third)", "Bim(Fourth)", "Bim(Fifth)", "Bim(Sixth)", "Bim(Seventh)", "Bim(Eight)", "Bsw(First)", "Bsw(Second)6", "Bsw(Third)"};
+    private final String[] syllabusfilename = {"BscCsit(First)", "BscCsit(Second)", "BscCsit(Third)", "BscCsit(Fourth)", "BscCsit(Fifth)", "BscCsit(Sixth)", "BscCsit(Seventh)", "BscCsit(Eight)", "Bim(First)", "Bim(Second)", "Bim(Third)", "Bim(Fourth)", "Bim(Fifth)", "Bim(Sixth)", "Bim(Seventh)", "Bim(Eight)", "Bsw(First)", "Bsw(Second)6", "Bsw(Third)"};
     private ProgressDialog progressDialog;
 
-    CoordinatorLayout coordinatorLayout;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -66,7 +66,7 @@ public class syallabus extends AppCompatActivity {
 
     }
 
-    void check() {
+    private void check() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Downloading file....");
         progressDialog.setCancelable(false);
@@ -78,7 +78,7 @@ public class syallabus extends AppCompatActivity {
             }
         });
     }
-void checkconnection()
+private void checkconnection()
 {
     CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.syllabcoordinate);
     ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -102,7 +102,7 @@ void checkconnection()
         snackbar.show();
     }
 }
-    void downlodsyllabus() {
+    private void downlodsyllabus() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         storage.getReference();
@@ -125,7 +125,7 @@ void checkconnection()
         }
     }
 
-    class firebasepdfdownloader extends AsyncTask<String, Void, Void> {
+    private class firebasepdfdownloader extends AsyncTask<String, Void, Void> {
 
         @Override
         protected void onProgressUpdate(Void... values) {

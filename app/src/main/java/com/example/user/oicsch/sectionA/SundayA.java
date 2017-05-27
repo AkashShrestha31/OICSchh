@@ -15,11 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.user.oicsch.MainActivity;
 import com.example.user.oicsch.R;
 
 import com.example.user.oicsch.Adapter.RVAdapter;
-import com.example.user.oicsch.log;
 import com.example.user.oicsch.schedule;
 
 import java.io.BufferedReader;
@@ -31,11 +29,11 @@ import java.util.ArrayList;
 
 
 public class SundayA extends Fragment {
-    ArrayList<schedule> array;
-    SharedPreferences sharedPreferences;
+    private ArrayList<schedule> array;
+    private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    File SDCardRoot;
-    File SDCardRoot1;
+    private File SDCardRoot;
+    private File SDCardRoot1;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +47,7 @@ public class SundayA extends Fragment {
         showdata();
     }
 
-    public void showdata(){
+    private void showdata(){
         sharedPreferences = getActivity().getSharedPreferences("storevalue", Context.MODE_PRIVATE);
         String faculty = sharedPreferences.getString("faculty", "");
         String semister = sharedPreferences.getString("semister", "");

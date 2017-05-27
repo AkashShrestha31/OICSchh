@@ -4,14 +4,14 @@ package com.example.user.oicsch.News;
  * Created by user on 2/25/2017.
  */
 
-public class getResponseData {
-    private String author;
+class getResponseData {
+    private final String author;
     private String title;
-    private String description;
-    private String url;
-    private String urlToImage;
-    private String publishedAt;
-    private String pagename;
+    private final String description;
+    private final String url;
+    private final String urlToImage;
+    private final String publishedAt;
+    private final String pagename;
 
     public getResponseData(String urlToImage, String description, String url, String author,String publishedAt, String pagename) {
         this.urlToImage = urlToImage;

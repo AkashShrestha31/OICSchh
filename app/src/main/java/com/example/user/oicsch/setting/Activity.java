@@ -22,7 +22,6 @@ import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
 import com.example.user.oicsch.Nav_drawer_item;
 import com.example.user.oicsch.R;
 import com.example.user.oicsch.firebaseurl;
-import com.example.user.oicsch.log;
 import com.example.user.oicsch.navimage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,32 +42,31 @@ import java.util.Arrays;
 
 public class Activity extends AppCompatActivity {
     private String[] settingitem = {"Update"};
-    private String[] headerurl = {"/BSCCSITDATAURL/BSCCSITDATA.csv", "/BIMDATAURL/BIMDATA.csv", "/BSWDATAURL/BSWDATA.csv"};
+    private final String[] headerurl = {"/BSCCSITDATAURL/BSCCSITDATA.csv", "/BIMDATAURL/BIMDATA.csv", "/BSWDATAURL/BSWDATA.csv"};
     private URL url;
-    ArrayList<String> semisterBSCCSIT;
-    ArrayList<String> semisterBIM;
-    ArrayList<String> semisterBSW;
-    ArrayList<Nav_drawer_item> items;
-    ArrayList<navimage> navimages;
-    Spinner spinner1;
-    Spinner spinner2;
-    long total = 0;
-    int count;
-    int S=1;
-    ProgressDialog progressDialog;
-    Spinner spinner3;
-    ArrayAdapter<String> adapter1;
-    SharedPreferences checkstart;
-    SharedPreferences.Editor checkeditor;
-    ArrayList<firebaseurl> firebaseurls;
+    private ArrayList<String> semisterBSCCSIT;
+    private ArrayList<String> semisterBIM;
+    private ArrayList<String> semisterBSW;
+    private ArrayList<Nav_drawer_item> items;
+    private ArrayList<navimage> navimages;
+    private Spinner spinner1;
+    private Spinner spinner2;
+    private long total = 0;
+    private int count;
+    private int S=1;
+    private ProgressDialog progressDialog;
+    private ArrayAdapter<String> adapter1;
+    private SharedPreferences checkstart;
+    private SharedPreferences.Editor checkeditor;
+    private ArrayList<firebaseurl> firebaseurls;
 
-    String[] filename;
+    private String[] filename;
     String check;
-    File SDCardRoot1;
+    private File SDCardRoot1;
     int filecount=0;
-    File file;
-    File SDCardRoot;
-    boolean my_default_value=true;
+    private File file;
+    private File SDCardRoot;
+    private final boolean my_default_value=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,7 +182,7 @@ public class Activity extends AppCompatActivity {
     private void selectiondata() {
         spinner1 = (Spinner) findViewById(R.id.generalspinner1);
         spinner2 = (Spinner) findViewById(R.id.generalspinner2);
-        spinner3 = (Spinner) findViewById(R.id.generalspinner3);
+        Spinner spinner3 = (Spinner) findViewById(R.id.generalspinner3);
 
         semisterBSCCSIT = new ArrayList<>();
         semisterBIM = new ArrayList<>();
@@ -288,7 +286,7 @@ public class Activity extends AppCompatActivity {
                         checkeditor.remove("semister");
                         checkeditor.putString("semister","1");
                         checkeditor.apply();
-                        log.message("hey fuck");
+
                         break;
                     case 2:
                         checkeditor.remove("semister");
@@ -428,7 +426,7 @@ public class Activity extends AppCompatActivity {
         }
     }
 
-    class download extends AsyncTask<String, String,String> {
+    private class download extends AsyncTask<String, String,String> {
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);

@@ -3,7 +3,6 @@ package com.example.user.oicsch.calender;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,18 +15,14 @@ import android.widget.Toast;
 import com.example.user.oicsch.Adapter.SyllabusRVAdapter;
 import com.example.user.oicsch.R;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
 public class Bswcalender extends Fragment {
 
-    File SDCardRoot;
-    private String[] sem={"First Year","Second Year","Third Year"};
+    private File SDCardRoot;
+    private final String[] sem={"First Year","Second Year","Third Year"};
     private ArrayList<String> firebasesemisterBSW;
 
     @Override

@@ -8,7 +8,6 @@
         android:text="hey fuckeer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
         android:layout_marginLeft="94dp"
         android:layout_marginStart="94dp"
         android:layout_centerVertical="true"

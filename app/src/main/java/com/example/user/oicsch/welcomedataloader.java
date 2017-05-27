@@ -39,9 +39,9 @@ import java.net.URL;
 
 public class welcomedataloader extends AppCompatActivity {
     private static final int REQUEST_WRITE_STORAGE = 112;
-    ProgressBar progressBar;
-    File Dir;
-    ImageView imageView;
+    private ProgressBar progressBar;
+    private File Dir;
+    private ImageView imageView;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -110,7 +110,7 @@ public class welcomedataloader extends AppCompatActivity {
     startretry();
 
     }
-public void startretry()
+private void startretry()
 {
     imageView.setBackgroundResource(0);
     imageView.setBackgroundResource(R.mipmap.ic_launcher);
@@ -190,7 +190,7 @@ startretry();
         firebaseurldownloads.execute(urlarray);
     }
 
-    class firebaseurldownload extends AsyncTask<String, Void, Void> {
+    private class firebaseurldownload extends AsyncTask<String, Void, Void> {
 
         @Override
         protected void onProgressUpdate(Void... values) {

@@ -21,11 +21,11 @@ import com.example.user.oicsch.webview;
 import java.util.ArrayList;
 
 class newadapter extends RecyclerView.Adapter<newadapter.myviewHolder> {
-    private ArrayList<getResponseData> data;
+    private final ArrayList<getResponseData> data;
     private ProgressBar progressBar;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-    Context context;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
+    private final Context context;
 
     newadapter(ArrayList<getResponseData> data, Context context) {
         sharedPreferences=context.getSharedPreferences("url",Context.MODE_PRIVATE);
@@ -38,8 +38,11 @@ class newadapter extends RecyclerView.Adapter<newadapter.myviewHolder> {
 
     class myviewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView i;
-        TextView v2, v3, v4,pagename;
+        final ImageView i;
+        final TextView v2;
+        final TextView v3;
+        final TextView v4;
+        final TextView pagename;
 
         myviewHolder(View itemView) {
             super(itemView);

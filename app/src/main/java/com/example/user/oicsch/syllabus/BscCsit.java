@@ -21,9 +21,9 @@ import java.io.File;
 
 
 public class BscCsit extends Fragment {
-    File SDCardRoot;
+    private File SDCardRoot;
 
-    String[] sem;
+    private String[] sem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

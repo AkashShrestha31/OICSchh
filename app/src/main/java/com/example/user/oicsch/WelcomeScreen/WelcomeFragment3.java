@@ -2,7 +2,6 @@ package com.example.user.oicsch.WelcomeScreen;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,33 +24,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class WelcomeFragment3 extends Fragment {
-    ArrayList<String> semisterBSCCSIT;
-    ArrayList<String> semisterBIM;
+    private ArrayList<String> semisterBSCCSIT;
+    private ArrayList<String> semisterBIM;
 
 
 
-    ArrayList<String> semisterBSW;
-    Spinner spinner1;
-    Spinner spinner;
-    Spinner spinner2;
-    ArrayAdapter<String> adapter1;
-    SharedPreferences checkstart;
-    SharedPreferences.Editor checkeditor;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private ArrayList<String> semisterBSW;
+    private Spinner spinner1;
+    private Spinner spinner;
+    private Spinner spinner2;
+    private ArrayAdapter<String> adapter1;
+    private SharedPreferences checkstart;
+    private SharedPreferences.Editor checkeditor;
 
 
-    }
-
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

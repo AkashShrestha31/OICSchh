@@ -14,13 +14,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
-import com.example.user.oicsch.API;
 import com.example.user.oicsch.R;
 import com.example.user.oicsch.ResponseModel;
+import com.example.user.oicsch.SSLAuthenticate.SSLAuthenticate;
 import com.example.user.oicsch.setting.Activity;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,27 +40,32 @@ import rx.schedulers.Schedulers;
 public class newsportal extends Activity{
     TextView textView;
     ImageView imageView;
-    RecyclerView recyclerView;
-    newadapter mAdapter;
-    ArrayList<getResponseData> sendData;
-    API api;
+    private RecyclerView recyclerView;
+    private newadapter mAdapter;
+    private ArrayList<getResponseData> sendData;
+    private API api;
 
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_newsportal);
       internetcheck();
     }
-void internetcheck(){
+private void internetcheck(){
     progressBar = (ProgressBar) findViewById(R.id.progressbar);
     CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
     ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
     NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
     if (networkInfo != null && networkInfo.isConnected()) {
         progressBar.setVisibility(View.VISIBLE);
-        connecttoapi();
+        try {
+            connecttoapi();
+        } catch (CertificateException | IOException | NoSuchAlgorithmException | KeyStoreException | KeyManagementException e) {
+            e.printStackTrace();
+        }
     } else {
         progressBar.setVisibility(View.GONE);
         Snackbar snackbar = Snackbar
@@ -72,14 +82,17 @@ snackbar.setActionTextColor(Color.BLACK);
         snackbar.show();
     }
 }
-    void connecttoapi() {
+    private void connecttoapi() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
         sendData = new ArrayList<>();
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+//using retrofit
         api = new Retrofit.Builder().baseUrl("https://newsapi.org/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(SSLAuthenticate.getAuthenticate(this))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-
                 .build()
+                
                 .create(API.class);
         getTechCunch();
         getendgate();
@@ -91,7 +104,7 @@ snackbar.setActionTextColor(Color.BLACK);
 
     }
 
-    public void getTechCunch() {
+    private void getTechCunch() {
         api.getTechCrunchData().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Action1<ResponseModel>() {
@@ -109,8 +122,9 @@ snackbar.setActionTextColor(Color.BLACK);
                                 SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
                                 Date _24HourDt = _24HourSDF.parse(_24HourTime);
                                 sendData.add(new getResponseData(model.getUrlToImage(), model.getTitle(), model.getUrl(), (model.getAuthor() == null) ? "Unknown" : "" + model.getAuthor(), splitdescription[0] + "," + _12HourSDF.format(_24HourDt), s));
-                                // Toast.makeText(MainActivity.this,_12HourSDF.format(_24HourDt), Toast.LENGTH_SHORT).show();
-                            } catch (Exception ignored) {
+                                 Toast.makeText(newsportal.this,_12HourSDF.format(_24HourDt), Toast.LENGTH_SHORT).show();
+                            } catch (Exception e) {
+                                Toast.makeText(newsportal.this, "error: "+e ,Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -123,14 +137,14 @@ snackbar.setActionTextColor(Color.BLACK);
                     public void call(Throwable throwable) {
                         progressBar.setVisibility(View.GONE);
                         internetcheck();
-                       // Toast.makeText(newsportal.this, "Network failed" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(newsportal.this, "message :" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
 
     }
 
-    public void getTechnica() {
+    private void getTechnica() {
         api.getTechnica().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Action1<ResponseModel>() {

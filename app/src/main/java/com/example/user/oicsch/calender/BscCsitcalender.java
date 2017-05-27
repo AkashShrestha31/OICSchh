@@ -26,8 +26,8 @@ import java.util.ArrayList;
 
 
 public class BscCsitcalender extends Fragment {
-    File SDCardRoot=null;
-    String[] sem;
+    private File SDCardRoot=null;
+    private String[] sem;
     private ArrayList<String> firebasesemisterBSCCSIT;
     @Override
     public void onCreate(Bundle savedInstanceState) {

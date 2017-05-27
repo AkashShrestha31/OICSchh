@@ -17,24 +17,10 @@
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
-    <style name="list_card">
-        <item name="android:paddingLeft">@dimen/list_card_padding_left</item>
-        <item name="android:paddingRight">@dimen/list_card_padding_right</item>
-        <item name="android:paddingBottom">@dimen/list_card_padding_bottom</item>
-        <item name="android:paddingTop">@dimen/list_card_padding_top</item>
-    </style>
-
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">#ffffff</item>
-
-    </style>
-
-    <style name="Divider1">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/cardview_shadow_start_color</item>
 
     </style>
 

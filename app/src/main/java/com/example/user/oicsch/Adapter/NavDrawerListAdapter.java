@@ -21,10 +21,10 @@ import java.util.ArrayList;
  * Created by Aakash on 8/3/2016.
  */
 public class NavDrawerListAdapter extends BaseAdapter {
-    Context context;
+    private final Context context;
     Drawable res;
-            ArrayList<Nav_drawer_item> draweritem=new ArrayList<>();
-    ArrayList<navimage> navigationimage=new ArrayList<>();
+            private ArrayList<Nav_drawer_item> draweritem=new ArrayList<>();
+    private ArrayList<navimage> navigationimage=new ArrayList<>();
 public NavDrawerListAdapter(Context context, ArrayList<Nav_drawer_item> draweritem, ArrayList<navimage> navigationimage)
 {
     this.context=context;

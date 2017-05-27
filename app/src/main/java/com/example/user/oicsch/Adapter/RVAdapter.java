@@ -18,18 +18,18 @@ import java.util.List;
  * Created by Aakash on 7/30/2016.
  */
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
-    private List<schedule> array;
-    Context context;
+    private final List<schedule> array;
+    private final Context context;
     public RVAdapter(Context context, List<schedule> array) {
         this.context=context;
         this.array=array;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
-        TextView Stime;
-        TextView Etime;
-        TextView subject;
+        final CardView cv;
+        final TextView Stime;
+        final TextView Etime;
+        final TextView subject;
 
         public MyViewHolder(View view) {
             super(view);

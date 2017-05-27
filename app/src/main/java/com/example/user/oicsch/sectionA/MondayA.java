@@ -31,9 +31,9 @@ import java.util.ArrayList;
  */
 
 public class MondayA extends Fragment {
-    ArrayList<schedule> array;
+    private ArrayList<schedule> array;
     private File SDCardRoot;
-SharedPreferences sharedPreferences;
+private SharedPreferences sharedPreferences;
     private File SDCardRoot1;
 
 
@@ -51,7 +51,7 @@ SharedPreferences sharedPreferences;
         showdata();
     }
 
-    public void showdata(){
+    private void showdata(){
         sharedPreferences = getActivity().getSharedPreferences("storevalue", Context.MODE_PRIVATE);
         String faculty = sharedPreferences.getString("faculty", "");
         String semister = sharedPreferences.getString("semister", "");

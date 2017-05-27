@@ -5,7 +5,8 @@ package com.example.user.oicsch;
  */
 
 public class firebaseurl {
-    String filename,url;
+    private final String filename;
+    private final String url;
 
 
     public firebaseurl(String filename, String url)

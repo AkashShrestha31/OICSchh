@@ -3,8 +3,12 @@ package com.example.user.oicsch.Notification;
 /**
  * Created by user on 5/15/2017.
  */
-public class Notify {
-    String Title,Message,Image_url,Time,Date;
+class Notify {
+    private final String Title;
+    private final String Message;
+    private final String Image_url;
+    private final String Time;
+    private final String Date;
 
     public String getDate() {
         return Date;

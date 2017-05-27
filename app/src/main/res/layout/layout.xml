@@ -78,7 +78,6 @@
                 android:paddingLeft="10dp"
                 android:weightSum="1">
                 <ImageView
-                    android:id="@+id/imageView"
                     android:layout_width="11dp"
                     android:layout_height="11dp"
                     android:layout_gravity="center"

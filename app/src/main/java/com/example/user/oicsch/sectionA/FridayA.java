@@ -24,16 +24,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.security.spec.ECField;
 import java.util.ArrayList;
 
 /**
  * Created by user on 2/4/2017.
  */
 public class FridayA extends Fragment {
-    ArrayList<schedule> array;
-    File SDCardRoot;
-   SharedPreferences sharedPreferences;
+    private ArrayList<schedule> array;
+    private File SDCardRoot;
+   private SharedPreferences sharedPreferences;
     private File SDCardRoot1;
 
     @Override
@@ -48,7 +47,7 @@ showdata();
         showdata();
     }
 
-    public void showdata(){
+    private void showdata(){
         sharedPreferences = getActivity().getSharedPreferences("storevalue", Context.MODE_PRIVATE);
         String faculty = sharedPreferences.getString("faculty", "");
         String semister = sharedPreferences.getString("semister", "");

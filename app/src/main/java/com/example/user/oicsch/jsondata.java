@@ -5,7 +5,10 @@ import android.os.Parcelable;
 
 
 class jsondata implements Parcelable{
-    private String image,description,url,publishedat;
+    private final String image;
+    private final String description;
+    private final String url;
+    private final String publishedat;
     jsondata(String image, String description, String url, String publishedat)
     {
         //Log.d("hey","imageurl :"+image);
@@ -14,7 +17,7 @@ class jsondata implements Parcelable{
         this.url=url;
         this.publishedat=publishedat;
     }
-    public jsondata(Parcel input)
+    private jsondata(Parcel input)
     {
         image=input.readString();
         description=input.readString();

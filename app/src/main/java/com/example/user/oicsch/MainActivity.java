@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +16,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +33,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
 import com.example.user.oicsch.News.newsportal;
 import com.example.user.oicsch.Notification.notification;
@@ -53,7 +52,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -67,12 +65,12 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+    private static final int RC_SIGN_IN = 9001;
     private ListView lv;
-    TextView tv;
+    private TextView tv;
     private ArrayList<navimage> navigationimage;
     private ImageView navimg;
     private GoogleApiClient mGoogleApiClient;
-    private static final int RC_SIGN_IN = 9001;
     private AlertDialog alert;
     private Toolbar tb;
     private String check = "oop";
@@ -85,13 +83,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private SharedPreferences.Editor editor;
     private NavDrawerListAdapter nav;
     private String[] nevMenuItem;
-    AlertDialog.Builder dialog_builder;
-    public ProgressDialog mProgressDialog;
-    DatabaseReference databaseReference;
+    private AlertDialog.Builder dialog_builder;
+    private ProgressDialog mProgressDialog;
+    private DatabaseReference databaseReference;
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
-    ImageView imagProfile;
+    private ImageView imagProfile;
     private SharedPreferences token;
 
     @Override
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.activity_main);
         //device token sharedpreference
 
-        token=getSharedPreferences("Token",Context.MODE_PRIVATE);
+        token = getSharedPreferences("Token", Context.MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
         Button signInButton = (Button) findViewById(R.id.login);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -117,9 +115,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         googlesignin();
                         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                         startActivityForResult(signInIntent, RC_SIGN_IN);
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Toast.makeText(MainActivity.this, "Sign in failed!!!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
@@ -182,14 +178,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     //Toast.makeText(this, "This is called", Toast.LENGTH_SHORT).show();
                     databaseReference = FirebaseDatabase.getInstance().getReference();
                     databaseReference.child("Students");
-                    databaseReference.child("Students").child(""+account.getDisplayName());
-                    databaseReference.child("Students").child(""+account.getDisplayName()).child("Gmail").setValue(""+account.getEmail());
-                    databaseReference.child("Students").child(""+account.getDisplayName()).child("Image Url").setValue(""+account.getPhotoUrl());
-                    databaseReference.child("Students").child(""+account.getDisplayName()).child("Device Token").setValue(""+token.getString("usertoken",""));
+                    databaseReference.child("Students").child("" + account.getDisplayName());
+                    databaseReference.child("Students").child("" + account.getDisplayName()).child("Gmail").setValue("" + account.getEmail());
+                    databaseReference.child("Students").child   ("" + account.getDisplayName()).child("Image Url").setValue("" + account.getPhotoUrl());
+                    databaseReference.child("Students").child("" + account.getDisplayName()).child("Device Token").setValue("" + token.getString("usertoken", ""));
 
-                }
-                catch(Exception e) {
-                    Log.d("aksh","Exception is "+e);
+                } catch (Exception e) {
+                    Log.d("aksh", "Exception is " + e);
                 }
                 firebaseAuthWithGoogle(account);
             } else {
@@ -235,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     // [END auth_with_google]
-    public void googlesignin() {
+    private void googlesignin() {
         // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -258,12 +253,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if (user != null) {
             TextView textView = (TextView) findViewById(R.id.name);
             textView.setVisibility(View.VISIBLE);
-            String str=user.getDisplayName();
+            String str = user.getDisplayName();
             try {
                 textView.setText(str.toUpperCase());
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 textView.setText(str);
             }
             findViewById(R.id.login).setVisibility(View.GONE);
@@ -285,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     //progressbar for authuntication
-    public void showProgressDialog() {
+    private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
             mProgressDialog.setMessage(getString(R.string.loading));
@@ -295,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         mProgressDialog.show();
     }
 
-    public void hideProgressDialog() {
+    private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
@@ -312,7 +305,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         switch (faculty) {
             case "BSC CSIT":
                 //editor.clear();
-                    setTitle("BSC CSIT");
+                setTitle("BSC CSIT");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitcolor)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimblack)));
@@ -447,8 +440,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        String str=checkstart.getString("faculty", "").toLowerCase().replaceAll(" ","");
-        Log.d("akash",""+str);
+        String str = checkstart.getString("faculty", "").toLowerCase().replaceAll(" ", "");
+        Log.d("akash", "" + str);
         FirebaseMessaging.getInstance().subscribeToTopic("akash");
         /*switch (str)
         {
@@ -651,7 +644,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-    public String showsemiserCSIT(ArrayList<String> firebasesemister) {
+    private String showsemiserCSIT(ArrayList<String> firebasesemister) {
         dialog_builder = new AlertDialog.Builder(MainActivity.this);
         dialog_builder.setCancelable(false);
         LayoutInflater inflat = getLayoutInflater();
@@ -718,7 +711,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         return check;
     }
 
-    public String showsemiserBIM(ArrayList<String> firebasesemister) {
+    private String showsemiserBIM(ArrayList<String> firebasesemister) {
         dialog_builder = new AlertDialog.Builder(MainActivity.this, R.style.MyDialogTheme);
         dialog_builder.setCancelable(false);
         LayoutInflater inflat = getLayoutInflater();
@@ -795,7 +788,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }
     }
 
-    public void showsemiserBSW(ArrayList<String> firebasesemister) {
+    private void showsemiserBSW(ArrayList<String> firebasesemister) {
         dialog_builder = new AlertDialog.Builder(MainActivity.this);
         dialog_builder.setCancelable(false);
         LayoutInflater inflat = getLayoutInflater();
@@ -857,10 +850,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         });
     }
 
-    public void createspinner(String section) {
+    private void createspinner(String section) {
         int select = Integer.parseInt(section);
         String[] spinner = {"Section A", "Section B"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this ,R.layout.spintext, spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spintext, spinner);
         Spinner spin = (Spinner) findViewById(R.id.spin);
         spin.setAdapter(adapter);
         spin.setSelection(select);

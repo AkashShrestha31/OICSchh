@@ -29,10 +29,10 @@ import java.util.ArrayList;
  * Created by user on 2/4/2017.
  */
 public class ThrusdayB extends Fragment {
-    ArrayList<schedule> array;
-    SharedPreferences sharedPreferences;
+    private ArrayList<schedule> array;
+    private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    File SDCardRoot;
+    private File SDCardRoot;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

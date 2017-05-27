@@ -16,9 +16,9 @@ import java.util.ArrayList;
  * Created by user on 5/2/2017.
  */
 
-public class dialogadapter extends BaseAdapter {
-    ArrayList<String> firebase;
-    Context context;
+class dialogadapter extends BaseAdapter {
+    private final ArrayList<String> firebase;
+    private final Context context;
    public dialogadapter(ArrayList<String> firebase,Context context)
     {
         this.firebase=firebase;

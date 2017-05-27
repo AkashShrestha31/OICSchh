@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
  */
 
 public class navimage {
-    Drawable drawerimage;
+    private final Drawable drawerimage;
     public navimage(Drawable drawerimage)
     {
         this.drawerimage=drawerimage;

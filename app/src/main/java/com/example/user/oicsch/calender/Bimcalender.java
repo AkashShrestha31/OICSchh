@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class Bimcalender extends Fragment {
 
-    File SDCardRoot;
+    private File SDCardRoot;
     private String[] sem;
     private ArrayList<String> firebasesemisterBIM;
 

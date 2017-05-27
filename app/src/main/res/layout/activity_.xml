@@ -15,14 +15,12 @@
         android:paddingLeft="14dp">
 
         <ImageView
-            android:id="@+id/imageView3"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:src="@mipmap/settinghome" />
 
         <TextView
-            android:id="@+id/general"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -81,7 +79,6 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/view3"
         style="@style/Divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -100,7 +97,6 @@
         </ListView>
 
         <View
-            android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="#ededed" />
@@ -119,7 +115,6 @@
             android:src="@mipmap/notificationbell" />
 
         <TextView
-            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

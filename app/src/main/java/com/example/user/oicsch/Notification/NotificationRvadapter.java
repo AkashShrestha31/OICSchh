@@ -19,17 +19,20 @@ import java.util.ArrayList;
  */
 
 public class NotificationRvadapter extends RecyclerView.Adapter<NotificationRvadapter.myviewholer> {
-    Context context;
-    ArrayList<Notify> notification;
-    View Itemview;
+    private final Context context;
+    private final ArrayList<Notify> notification;
+    private View Itemview;
     public NotificationRvadapter(ArrayList<Notify> notification,Context context) {
         this.context = context;
         this.notification = notification;
     }
 
     public class myviewholer extends RecyclerView.ViewHolder {
-        TextView title,message,time,date;
-        ImageView imageview;
+        final TextView title;
+        final TextView message;
+        final TextView time;
+        final TextView date;
+        final ImageView imageview;
         public myviewholer(View itemView) {
             super(itemView);
            title = (TextView) itemView.findViewById(R.id.notifytitle);

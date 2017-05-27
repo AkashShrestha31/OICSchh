@@ -19,7 +19,6 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/relative"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:paddingLeft="16dp">

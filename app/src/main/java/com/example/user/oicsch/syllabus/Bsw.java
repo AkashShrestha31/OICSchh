@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +19,8 @@ import java.io.File;
 
 
 public class Bsw extends Fragment {
-    File SDCardRoot;
-    private String[] sem={"First Year","Second Year","Third Year"};
+    private File SDCardRoot;
+    private final String[] sem={"First Year","Second Year","Third Year"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

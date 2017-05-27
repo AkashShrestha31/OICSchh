@@ -23,20 +23,10 @@ import java.util.Date;
 
 
 public class MasterFragment_sectionA extends Fragment {
-    View view;
-String dayName;
-String currentDate;
-    int i;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+    private View view;
+private String dayName;
+private String currentDate;
+    private int i;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

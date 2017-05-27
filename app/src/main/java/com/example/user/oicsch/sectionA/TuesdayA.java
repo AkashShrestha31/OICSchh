@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Created by user on 2/4/2017.
  */
 public class TuesdayA extends Fragment {
-    ArrayList<schedule> array;
+    private ArrayList<schedule> array;
     private File SDCardRoot;
     private File SDCardRoot1;
 
@@ -46,7 +46,7 @@ showdata();
         showdata();
     }
 
-    public void showdata(){
+    private void showdata(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("storevalue", Context.MODE_PRIVATE);
         String faculty = sharedPreferences.getString("faculty", "");
         String semister = sharedPreferences.getString("semister", "");

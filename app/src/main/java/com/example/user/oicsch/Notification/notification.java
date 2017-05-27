@@ -33,7 +33,7 @@ public class notification extends AppCompatActivity {
 
     private NotificationRvadapter notificationRvadapter;
     private SharedPreferences checkstart;
-    ArrayList<Notify> notifyArrayList;
+    private ArrayList<Notify> notifyArrayList;
     private ProgressBar progressbar;
 
     @Override
@@ -50,7 +50,7 @@ public class notification extends AppCompatActivity {
 
     }
 
-    void internetcheck() {
+    private void internetcheck() {
         progressbar = (ProgressBar) findViewById(R.id.notifyprogressbar);
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.notifycoordinatorLayout);
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -75,7 +75,7 @@ public class notification extends AppCompatActivity {
         }
     }
 
-    public void fetchnotification() {
+    private void fetchnotification() {
         // Get a reference to our posts
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         Log.d("oop", "test: " + checkstart.getString("faculty", "").toUpperCase());

@@ -49,7 +49,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private Bitmap bitmap;
     private DatabaseReference databaseReference;
     private SharedPreferences checkstart;
-Boolean my_default_value=true;
+private final Boolean my_default_value=true;
     /**
      * Called when message is received.
      *
@@ -90,13 +90,8 @@ Boolean my_default_value=true;
             databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Time").setValue(time);
             databaseReference.child("Notification").child(checkstart.getString("faculty","")).child(title).child("Date").setValue(date);
             sendNotification(title,message,bitmap);
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
-                scheduleJob();
-            } else {
-                // Handle message within 10 seconds
-                handleNow();
-            }
+            // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
+            scheduleJob();
 
         }
 
@@ -160,15 +155,14 @@ Boolean my_default_value=true;
         if(checkstart.getBoolean("checkbox",my_default_value))
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
-    public Bitmap getBitmapfromUrl(String imageUrl) {
+    private Bitmap getBitmapfromUrl(String imageUrl) {
         try {
             URL url = new URL(imageUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            return bitmap;
+            return BitmapFactory.decodeStream(input);
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
