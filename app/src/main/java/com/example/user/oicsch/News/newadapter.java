@@ -22,10 +22,10 @@ import java.util.ArrayList;
 
 class newadapter extends RecyclerView.Adapter<newadapter.myviewHolder> {
     private final ArrayList<getResponseData> data;
-    private ProgressBar progressBar;
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
     private final Context context;
+    private ProgressBar progressBar;
 
     newadapter(ArrayList<getResponseData> data, Context context) {
         sharedPreferences=context.getSharedPreferences("url",Context.MODE_PRIVATE);
@@ -34,6 +34,38 @@ class newadapter extends RecyclerView.Adapter<newadapter.myviewHolder> {
         this.data = data;
 
 
+    }
+
+    @Override
+    public myviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_card_layout, parent, false);
+        final CardView cardView = (CardView) view.findViewById(R.id.card_view1);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context, "cardview is click"+v.getTag(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return new myviewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(myviewHolder holder, int position) {
+
+        holder.v2.setText(data.get(position).getDescription());
+        holder.v3.setText(data.get(position).getAuthor());
+        holder.v4.setText(data.get(position).getPublishedAt());
+        holder.pagename.setText(data.get(position).getPagename());
+        Glide.clear(holder.i);
+        Glide.with(holder.i.getContext())
+                .load(data.get(position).getUrlToImage())
+                .placeholder(R.mipmap.ic_launcher)
+                .into(holder.i);
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
     }
 
     class myviewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -70,40 +102,6 @@ class newadapter extends RecyclerView.Adapter<newadapter.myviewHolder> {
            // Toast.makeText(context, ""+sharedPreferences.getString("url",""), Toast.LENGTH_SHORT).show();
 
         }
-    }
-
-
-    @Override
-    public myviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout, parent, false);
-        final CardView cardView = (CardView) view.findViewById(R.id.card_view1);
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(context, "cardview is click"+v.getTag(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        return new myviewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(myviewHolder holder, int position) {
-
-        holder.v2.setText(data.get(position).getDescription());
-        holder.v3.setText(data.get(position).getAuthor());
-        holder.v4.setText(data.get(position).getPublishedAt());
-        holder.pagename.setText(data.get(position).getPagename());
-        Glide.clear(holder.i);
-        Glide.with(holder.i.getContext())
-                .load(data.get(position).getUrlToImage())
-                .placeholder(R.mipmap.ic_launcher)
-                .into(holder.i);
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return data.size();
     }
 
 

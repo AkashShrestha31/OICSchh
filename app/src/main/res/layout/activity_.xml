@@ -1,143 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting_coordinate_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/firstgeneral"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="14dp">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/settinghome" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:paddingBottom="10dp"
-            android:paddingLeft="9dp"
-            android:paddingRight="0dp"
-            android:paddingTop="10dp"
-            android:text="@string/general"
-            android:textColor="#111bdc"
-            android:textSize="19sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view1"
-        style="@style/Divider"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/firstgeneral" />
-
-    <LinearLayout
-        android:id="@+id/generallayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/view1"
-        android:background="#36BC9A"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
-
-        <Spinner
-            android:id="@+id/generalspinner1"
-            style="@style/Base.Theme.AppCompat.Light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
-            android:layout_marginStart="19dp"
-            android:popupBackground="#ffffff"
-            android:spinnerMode="dropdown" />
-
-        <Spinner
-            android:id="@+id/generalspinner2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp"
-            android:popupBackground="#ffffff" />
-
-        <Spinner
-            android:id="@+id/generalspinner3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
-            android:popupBackground="#ffffff" />
-    </LinearLayout>
-
-    <View
-        style="@style/Divider"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/generallayout" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="61dp">
-
-        </ListView>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#ededed" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="5dp">
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="31dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/notificationbell" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="13dp"
-            android:layout_marginStart="10dp"
-            android:text="Notification"
-            android:textColor="@drawable/selector"
-            android:textSize="17sp" />
-
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
-            android:layout_gravity="center"
+            android:id="@+id/firstgeneral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end">
+            android:orientation="horizontal"
+            android:paddingLeft="14dp">
 
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkBox2"
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/settinghome" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="0dp"
+                android:paddingTop="10dp"
+                android:text="@string/general"
+                android:textColor="#111bdc"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/firstgeneral" />
+
+        <LinearLayout
+            android:id="@+id/generallayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view1"
+            android:background="#36BC9A"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <Spinner
+                android:id="@+id/generalspinner1"
+                style="@style/Base.Theme.AppCompat.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginStart="19dp"
+                android:popupBackground="#ffffff"
+                android:spinnerMode="dropdown" />
+
+            <Spinner
+                android:id="@+id/generalspinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="38dp"
+                android:layout_marginStart="38dp"
+                android:popupBackground="#ffffff" />
+
+            <Spinner
+                android:id="@+id/generalspinner3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp"
+                android:popupBackground="#ffffff" />
+        </LinearLayout>
+
+        <View
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/generallayout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="61dp">
+
+            </ListView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#ededed" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/notificationbell" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:buttonTint="@android:color/black" />
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="10dp"
+                android:text="Notification"
+                android:textColor="@drawable/selector"
+                android:textSize="17sp" />
 
-</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="end">
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:buttonTint="@android:color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

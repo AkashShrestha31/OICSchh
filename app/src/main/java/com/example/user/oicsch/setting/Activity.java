@@ -3,11 +3,16 @@ package com.example.user.oicsch.setting;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.util.Log;
@@ -16,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.example.user.oicsch.Adapter.NavDrawerListAdapter;
@@ -37,12 +43,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Activity extends AppCompatActivity {
-    private String[] settingitem = {"Update"};
     private final String[] headerurl = {"/BSCCSITDATAURL/BSCCSITDATA.csv", "/BIMDATAURL/BIMDATA.csv", "/BSWDATAURL/BSWDATA.csv"};
+    private final boolean my_default_value=true;
+    String check;
+    int filecount=0;
+    private String[] settingitem = {"Update"};
     private URL url;
     private ArrayList<String> semisterBSCCSIT;
     private ArrayList<String> semisterBIM;
@@ -59,20 +72,18 @@ public class Activity extends AppCompatActivity {
     private SharedPreferences checkstart;
     private SharedPreferences.Editor checkeditor;
     private ArrayList<firebaseurl> firebaseurls;
-
     private String[] filename;
-    String check;
     private File SDCardRoot1;
-    int filecount=0;
     private File file;
     private File SDCardRoot;
-    private final boolean my_default_value=true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_);
         checkstart = getSharedPreferences("start", Context.MODE_PRIVATE);
         checkeditor = checkstart.edit();
+
         //just test
         SDCardRoot1 = Environment.getExternalStorageDirectory();
         SDCardRoot=new File(SDCardRoot1.getAbsolutePath()+ "/" +"Android/data/com.example.user.oicsch","Files");
@@ -81,7 +92,6 @@ public class Activity extends AppCompatActivity {
         filename=new String[9];
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Please wait this may take few minute....");
-
        // progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setCancelable(false);
         selectiondata();
@@ -95,27 +105,10 @@ public class Activity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                progressDialog.show();
+                progressDialog.hide();
                 switch (position) {
                     case 0:
-                        FirebaseStorage storage = FirebaseStorage.getInstance();
-                        StorageReference storageRef = storage.getReference();
-                        for(String header:headerurl) {
-                            storageRef.child(header).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    senduri(uri);
-                                    Log.d("line", "successful" + uri);
-                                }
-
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d("line", "failure" + e);
-                                }
-                            });
-                        }
+                  internetcheck();
                         /*storageRef.child(headerurl[1]).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -148,6 +141,55 @@ public class Activity extends AppCompatActivity {
                         break;
                 }
             }
+            //internet check
+            private void fetch_from_firebase(){
+                progressDialog.show();
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference();
+                for(String header:headerurl) {
+                    storageRef.child(header).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            senduri(uri);
+                            Log.d("line", "successful" + uri);
+                        }
+
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("line", "failure" + e);
+                        }
+                    });
+                }
+
+            }
+            private void internetcheck(){
+
+                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.setting_coordinate_layout);
+                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    try {
+                        fetch_from_firebase();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "No internet connection!", Snackbar.LENGTH_INDEFINITE)
+                            .setAction("RETRY", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    internetcheck();
+                                }
+                            });
+                    View snackbarView = snackbar.getView();
+                    snackbarView.setBackgroundColor(Color.WHITE);
+                    snackbar.setActionTextColor(Color.BLACK);
+                    snackbar.show();
+                }
+            }
+
 
             private void senduri(Uri uri) {
                 String urlarray = uri.toString();

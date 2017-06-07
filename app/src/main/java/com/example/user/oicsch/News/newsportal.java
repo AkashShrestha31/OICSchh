@@ -92,7 +92,7 @@ snackbar.setActionTextColor(Color.BLACK);
                 .client(SSLAuthenticate.getAuthenticate(this))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build()
-                
+
                 .create(API.class);
         getTechCunch();
         getendgate();

@@ -540,7 +540,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
                 switch (position) {
                     case 0:
-                        //getSupportActionBar().setSubtitle("About");
+                        //tb.setSubtitle("About");
                         //editor.clear();
 
                         showsemiserCSIT(firebasesemisterBSCCSIT);
@@ -651,19 +651,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         dialog_builder.setCancelable(false);
         View contentView = inflat.inflate(R.layout.dialog, null);
         dialog_builder.setView(contentView);
-        ListView llv = (ListView) contentView.findViewById(R.id.listView1);
+        final ListView llv = (ListView) contentView.findViewById(R.id.listView1);
         ArrayAdapter<String> adap = new ArrayAdapter<>(MainActivity.this, R.layout.dialoglistview, firebasesemister);
         llv.setDivider(null);
         llv.setAdapter(adap);
         alert = dialog_builder.create();
         alert.show();
-
         llv.setItemChecked(0, true);
         llv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                String s=llv.getItemAtPosition(position).toString();
                 if (position == 0) {
+                    tb.setSubtitle(s);
                     editor.putString("semister", "Zero");
                     editor.apply();
                     createspinner("0");
@@ -671,6 +671,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 1) {
+                  tb.setSubtitle(s);
                     editor.putString("semister", "One");
                     editor.apply();
                     createspinner("0");
@@ -678,6 +679,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 2) {
+                    tb.setSubtitle(s);
                     editor.putString("semister", "Two");
                     editor.apply();
                     createspinner("0");
@@ -685,6 +687,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 3) {
+                 tb.setSubtitle(s);
                     editor.putString("semister", "Three");
                     editor.apply();
                     createspinner("0");
@@ -717,7 +720,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         LayoutInflater inflat = getLayoutInflater();
         View contentView = inflat.inflate(R.layout.dialog, null);
         dialog_builder.setView(contentView);
-        ListView llv = (ListView) contentView.findViewById(R.id.listView1);
+        final ListView llv = (ListView) contentView.findViewById(R.id.listView1);
         ArrayAdapter<String> adap = new ArrayAdapter<>(MainActivity.this, R.layout.dialoglistview, firebasesemister);
         llv.setDivider(null);
         check = "oop";
@@ -728,8 +731,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         llv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s=llv.getItemAtPosition(position).toString();
                 if (position == 0) {
-
+                   tb.setSubtitle(s);
                     editor.putString("semister", "Zero");
                     editor.apply();
                     createspinner("0");
@@ -737,7 +741,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 1) {
-
+                    tb.setSubtitle(s);
                     editor.putString("semister", "One");
                     editor.apply();
                     createspinner("0");
@@ -745,7 +749,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 2) {
-
+                   tb.setSubtitle(s);
                     editor.putString("semister", "Two");
                     editor.apply();
                     createspinner("0");
@@ -753,14 +757,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 3) {
-
+                    tb.setSubtitle(s);
                     editor.putString("semister", "Three");
                     editor.apply();
                     createspinner("0");
                     alert.dismiss();
                     editor.clear();
                 }
-                setTitle("BIM");
+                tb.setTitle("BIM");
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitblack)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimcolor)));
@@ -794,7 +798,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         LayoutInflater inflat = getLayoutInflater();
         View contentView = inflat.inflate(R.layout.dialog, null);
         dialog_builder.setView(contentView);
-        ListView llv = (ListView) contentView.findViewById(R.id.listView1);
+        final ListView llv = (ListView) contentView.findViewById(R.id.listView1);
         ArrayAdapter<String> adap = new ArrayAdapter<>(MainActivity.this, R.layout.dialoglistview, firebasesemister);
         llv.setDivider(null);
         llv.setAdapter(adap);
@@ -804,7 +808,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         llv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s=llv.getItemAtPosition(position).toString();
                 if (position == 0) {
+                   tb.setSubtitle(s);
                     editor.putString("semister", "Zero");
                     editor.apply();
                     createspinner("0");
@@ -812,6 +818,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 1) {
+                   tb.setSubtitle(s);
                     editor.putString("semister", "One");
                     editor.apply();
                     createspinner("0");
@@ -819,6 +826,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 2) {
+                   tb.setSubtitle(s);
                     editor.putString("semister", "Two");
                     editor.apply();
                     createspinner("0");
@@ -826,6 +834,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 if (position == 3) {
+                tb.setSubtitle(s);
                     editor.putString("semister", "Three");
                     editor.apply();
                     createspinner("0");
@@ -833,7 +842,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     editor.clear();
                 }
                 setTitle("BSW");
-                getSupportActionBar().setSubtitle("Five");
+
                 navigationimage.clear();
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bsccsitblack)));
                 navigationimage.add(new navimage(getResources().getDrawable(R.mipmap.bimblack)));
